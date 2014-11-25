@@ -9,6 +9,7 @@ TwilioRails4::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   post 'twilio/voice' => 'twilio#voice'
+  post 'twilio/sms' => 'twilio#sms'
 
   post 'twilio/status' => 'twilio#status'
 
