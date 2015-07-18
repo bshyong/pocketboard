@@ -1,8 +1,6 @@
 <nav class="clearfix white bg-black">
   <div class="sm-col">
-    <a href="/" class="btn py2">Home</a>
-    <a href="/" class="btn py2">Burgers</a>
-    <a href="/" class="btn py2">Fries</a>
+    <a href="/" class="btn py2">Service Magic</a>
   </div>
   <div class="sm-col-right">
     <a href="/" class="btn py2">About</a>
@@ -12,10 +10,9 @@
 <div class="container px3 py2">
   <div>
     <h1>PocketBoard</h1>
-    <p class="lead">Snap a picture, send it to <br>
-    (323) 673-2344</p>
-    <p>
-      <h4><%= pluralize(@count, 'snap') %> sent</h4></h4>
+    <p class="lead">Service number (323) 673-2344</p>
+    <p class="h4 bold">
+      <%= pluralize(@conversations.count, 'conversations') %>
     </p>
   </div>
   <div class="overflow-scroll">
@@ -23,18 +20,24 @@
       <thead class="bg-darken-1">
         <tr>
           <th>Customer</th>
+          <th>City</th>
+          <th>State</th>
           <th>Messages</th>
           <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Huey Lewis and the News</td>
-          <td>Sports</td>
-          <td>
-            <span class="h4 inline-block px1 white bg-blue rounded">Open</span>
-          </td>
-        </tr>
+        <% @conversations.each do |c| %>
+          <tr>
+            <td><%= c.phone %></td>
+            <td><%= c.city %></td>
+            <td><%= c.state %></td>
+            <td><%= c.messages.count %></td>
+            <td>
+              <span class="h4 inline-block px1 white bg-blue rounded"><%= c.state %></span>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
