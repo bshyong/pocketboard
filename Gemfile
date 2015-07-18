@@ -35,6 +35,7 @@ end
 
 gem 'react-rails', '~> 1.0'
 gem 'basscss-rails'
+gem 'workflow'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

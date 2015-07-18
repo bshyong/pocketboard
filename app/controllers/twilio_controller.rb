@@ -29,6 +29,8 @@ class TwilioController < ApplicationController
         country: params["FromCountry"]
       )
 
+      # conversation = user.conversations.first
+
       user.snaps.create(
         body: params["Body"],
         media_url: params["MediaUrl0"],

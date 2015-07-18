@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150718044141) do
 
   create_table "conversations", force: true do |t|
     t.integer  "user_id"
-    t.string   "status"
+    t.string   "workflow_state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
