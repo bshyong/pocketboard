@@ -28,12 +28,12 @@
       <tbody>
         <% @conversations.each do |c| %>
           <tr>
-            <td><%= c.phone %></td>
-            <td><%= c.city %></td>
-            <td><%= c.state %></td>
+            <td><%= c.user.phone %></td>
+            <td><%= c.user.city.titleize %></td>
+            <td><%= c.user.state %></td>
             <td><%= c.messages.count %></td>
             <td>
-              <span class="h4 inline-block px1 white bg-blue rounded"><%= c.state %></span>
+              <span class="h4 inline-block px1 white bg-blue rounded"><%= c.current_state.name %></span>
             </td>
           </tr>
         <% end %>
