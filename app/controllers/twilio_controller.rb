@@ -17,19 +17,23 @@ class TwilioController < ApplicationController
   end
 
   def sms
-    puts params.inspect
-
-    user = User.where(phone: params["From"]).first_or_create
+    user = User.where(
+      phone: params["From"]
+    ).first_or_create
 
     if user
-      user.update_attributes( state: params["FromState"],
-                              zipcode: params["FromZip"],
-                              city: params["FromCity"],
-                              country: params["FromCountry"])
+      user.update_attributes(
+        state: params["FromState"],
+        zipcode: params["FromZip"],
+        city: params["FromCity"],
+        country: params["FromCountry"]
+      )
 
-      user.snaps.create(body: params["Body"],
-                        media_url: params["MediaUrl0"],
-                        msg_id: params["MessageSid"])
+      user.snaps.create(
+        body: params["Body"],
+        media_url: params["MediaUrl0"],
+        msg_id: params["MessageSid"]
+      )
     end
 
     # {"ToCountry"=>"US", "MediaContentType0"=>"image/jpeg", "ToState"=>"CA", "SmsMessageSid"=>"MM9edaa5afd31599a67580c5502636a164", "NumMedia"=>"1", "ToCity"=>"", "FromZip"=>"95156", "SmsSid"=>"MM9edaa5afd31599a67580c5502636a164", "FromState"=>"CA", "SmsStatus"=>"received", "FromCity"=>"SUNNYVALE", "Body"=>"", "FromCountry"=>"US", "To"=>"+13236732344", "ToZip"=>"", "MessageSid"=>"MM9edaa5afd31599a67580c5502636a164", "AccountSid"=>"AC7f1be0408517f1883d7c79c4e82bc40e", "From"=>"+14085059891", "MediaUrl0"=>"https://api.twilio.com/2010-04-01/Accounts/AC7f1be0408517f1883d7c79c4e82bc40e/Messages/MM9edaa5afd31599a67580c5502636a164/Media/ME91bc5abca4262dbdc3e7bf0ea1706b28", "ApiVersion"=>"2010-04-01"}
