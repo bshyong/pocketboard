@@ -38,6 +38,7 @@ gem 'jquery-rails'
 gem 'react-rails', '~> 1.0'
 gem 'basscss-rails'
 gem 'workflow'
+gem 'pusher'
 
 group :development, :test do
   gem 'faker'
