@@ -51,7 +51,7 @@ var Conversation = React.createClass({
       return (
         <div className="col col-12 m1" key={m.id}>
           <div>
-            <div className="col col-8 bg-aqua p1 px2">{m.body}</div>
+            <div className="col col-8 bg-silver p1 px2">{m.body}</div>
             <div className="col col-4">&nbsp;</div>
           </div>
         </div>
@@ -61,7 +61,7 @@ var Conversation = React.createClass({
         <div className="col col-12 m1" key={m.id}>
           <div>
             <div className="col col-4">&nbsp;</div>
-            <div className="col col-8 bg-green p1 px2">{m.body}</div>
+            <div className="col col-8 bg-aqua p1 px2">{m.body}</div>
           </div>
         </div>
       )
