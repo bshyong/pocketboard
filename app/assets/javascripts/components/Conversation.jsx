@@ -37,16 +37,22 @@ var Conversation = React.createClass({
   renderMessage(m) {
     if (m.sender_id) {
       return (
-        <div className="col col-12" key={m.id}>
-          <div className="col col-8 bg-aqua p1 px2">{m.body}</div>
-          <div className="col col-4"></div>
+        <div className="col col-12 m1" key={m.id}>
+          <div>
+            <div className="col col-8 bg-aqua p1 px2">{m.body}</div>
+            <div className="col col-4">&nbsp;</div>
+          </div>
         </div>
       )
     } else {
-      <div className="col col-12" key={m.id}>
-        <div className="col col-4"></div>
-        <div className="col col-8 bg-green p1 px2">{m.body}</div>
-      </div>
+      return (
+        <div className="col col-12 m1" key={m.id}>
+          <div>
+            <div className="col col-4">&nbsp;</div>
+            <div className="col col-8 bg-green p1 px2">{m.body}</div>
+          </div>
+        </div>
+      )
     }
   },
 
@@ -66,7 +72,15 @@ var Conversation = React.createClass({
 
   handleSendMessage() {
     const newMessageNode = React.findDOMNode(this.refs.newMessage)
-    console.log('sending', newMessageNode.value)
-    newMessageNode.value = ''
+    const messages = this.state.messages
+    console.log('sending new')
+    this.setState({
+      messages: messages.concat({
+        id: Date.now(),
+        body: newMessageNode.value
+      })
+    }, () => {
+      newMessageNode.value = ''
+    })
   }
 })
