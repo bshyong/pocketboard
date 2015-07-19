@@ -34,7 +34,8 @@ class TwilioController < ApplicationController
       message = conversation.messages.create(
         body: params["Body"],
         media_url: params["MediaUrl0"],
-        msg_id: params["MessageSid"]
+        msg_id: params["MessageSid"],
+        sender: user
       )
 
       media = message.media_url.blank? ? nil : "<img src='#{message.media_url}' />"
