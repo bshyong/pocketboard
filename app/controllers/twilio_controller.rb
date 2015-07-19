@@ -29,9 +29,9 @@ class TwilioController < ApplicationController
         country: params["FromCountry"]
       )
 
-      # conversation = user.conversations.first
+      conversation = user.conversations.with_open_state.order(created_at: :desc).first_or_create
 
-      user.snaps.create(
+      conversation.messages.create(
         body: params["Body"],
         media_url: params["MediaUrl0"],
         msg_id: params["MessageSid"]
