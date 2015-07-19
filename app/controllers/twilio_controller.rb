@@ -47,7 +47,8 @@ class TwilioController < ApplicationController
           'new_message',
           {
             id: "message_#{message.id}",
-            body: "#{message_body}"
+            body: "#{message_body}",
+            sender_id: "#{user.id}"
           }
         )
       rescue Pusher::Error => e
@@ -66,7 +67,8 @@ class TwilioController < ApplicationController
     smsid = params["SmsSid"]
     msg_status = params["MessageStatus"]
     puts params.inspect
-    render_twiml Twilio::TwiML::Response.new
+    render nothing: true, status: 200
+    # render_twiml Twilio::TwiML::Response.new
   end
 
 end
