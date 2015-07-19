@@ -6,7 +6,10 @@ class MessagesController < ApplicationController
     @conversation.messages.create(
       body: params[:body]
     )
-    @conversation.assign! if @conversation.messages.where(sender: nil).any?
+
+    if @conversation.open? && @conversation.messages.where(sender: nil).any?
+      @conversation.assign!
+    end
 
     client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = client.account.messages.create(
