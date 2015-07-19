@@ -11,7 +11,9 @@
     <%= yield %>
 
     <script>
-      autosize(document.querySelectorAll('.autosize'))
+      window.onload = function() {
+        autosize(document.querySelectorAll('.autosize'))
+      }
     </script>
   </body>
 </html>
