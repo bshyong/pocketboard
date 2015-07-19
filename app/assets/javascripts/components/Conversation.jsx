@@ -1,6 +1,7 @@
 var Conversation = React.createClass({
   propTypes: {
     messages: React.PropTypes.array,
+    conversation: React.PropTypes.object.isRequired
   },
 
   getDefaultProps() {
@@ -71,9 +72,13 @@ var Conversation = React.createClass({
   },
 
   handleSendMessage() {
+    const { conversation } = this.props
     const newMessageNode = React.findDOMNode(this.refs.newMessage)
     const messages = this.state.messages
-    console.log('sending new')
+
+    $.post(`/conversations/${conversation.id}/messages`, {
+      body: newMessageNode.value
+    })
     this.setState({
       messages: messages.concat({
         id: Date.now(),

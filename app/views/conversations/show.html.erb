@@ -3,5 +3,5 @@
     <p>Conversation with <span class="bold"><%= @user.phone %></span></p>
   </div>
 
-  <%= react_component('Conversation', messages: @conversation.messages) %>
+  <%= react_component('Conversation', messages: @conversation.messages, conversation: @conversation) %>
 </div>

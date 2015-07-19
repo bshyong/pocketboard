@@ -15,7 +15,9 @@ TwilioRails4::Application.routes.draw do
 
   post 'notifications/notify' => 'notifications#notify'
 
-  resources :conversations, only: [:show]
+  resources :conversations, only: [:show] do
+    resources :messages, only: [:create]
+  end
 
   root 'page#index'
 
