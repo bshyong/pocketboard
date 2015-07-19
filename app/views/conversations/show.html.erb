@@ -1,0 +1,27 @@
+<div class="container px3 py2">
+  <div>
+    <p>Conversation with <span class="bold"><%= @user.phone %></span></p>
+  </div>
+  <div class="container clearfix">
+    <% @conversation.messages.each do |m| %>
+      <div class="col col-12">
+        <% if m.sender %>
+          <div class="col col-8 bg-aqua p1 px2"><%= m.body %></div>
+          <div class="col col-4"></div>
+        <% else %>
+          <div class="col col-4"></div>
+          <div class="col col-8 bg-green p1 px2"><%= m.body %></div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="col col-12 mt3">
+      <hr />
+      <div class="flex flex-end mt2">
+        <textarea class="autosize field flex-auto"></textarea>
+        <div class="flex-none">
+          <button class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
