@@ -18,6 +18,7 @@ end
 User.find_each do |user|
   conversation = user.conversations.create
   conversation.messages.create(
-    body: Faker::Lorem.sentence(3)
+    body: Faker::Lorem.sentence(3),
+    sender: user
   )
 end
