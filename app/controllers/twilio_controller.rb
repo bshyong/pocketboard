@@ -29,7 +29,7 @@ class TwilioController < ApplicationController
         country: params["FromCountry"]
       )
 
-      conversation = user.conversations.with_open_state.order(created_at: :desc).first_or_create
+      conversation = user.conversations.order(created_at: :desc).first_or_create
 
       message = conversation.messages.create(
         body: params["Body"],
