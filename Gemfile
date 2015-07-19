@@ -33,6 +33,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+gem 'jquery-rails'
 gem 'react-rails', '~> 1.0'
 gem 'basscss-rails'
 gem 'workflow'

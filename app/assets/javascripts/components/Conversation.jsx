@@ -55,12 +55,18 @@ var Conversation = React.createClass({
       <div className="col col-12 mt3">
         <hr />
         <div className="flex flex-end mt2">
-          <textarea className="autosize field flex-auto"></textarea>
+          <textarea className="autosize field flex-auto" ref="newMessage"></textarea>
           <div className="flex-none">
-            <button className="btn btn-primary">Send</button>
+            <button className="btn btn-primary" onClick={this.handleSendMessage}>Send</button>
           </div>
         </div>
       </div>
     )
+  },
+
+  handleSendMessage() {
+    const newMessageNode = React.findDOMNode(this.refs.newMessage)
+    console.log('sending', newMessageNode.value)
+    newMessageNode.value = ''
   }
 })
