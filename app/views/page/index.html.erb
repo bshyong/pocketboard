@@ -28,7 +28,7 @@
             <td><%= c.user.state %></td>
             <td><%= c.messages.count %></td>
             <td>
-              <span class="h4 inline-block px1 white bg-blue rounded"><%= c.current_state.name %></span>
+              <span class="h4 inline-block px1 white bg-<%= c.current_state.name == :open ? 'green' : 'blue' %> rounded"><%= c.current_state.name.to_s.humanize %></span>
             </td>
           </tr>
         <% end %>
