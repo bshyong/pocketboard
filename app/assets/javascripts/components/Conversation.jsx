@@ -17,7 +17,18 @@ var Conversation = React.createClass({
   },
 
   componentDidMount() {
-    console.log('mounted')
+    const { conversation } = this.props
+    var channel = pusher.subscribe(`convo_${conversation.id}`)
+
+    channel.bind('new_message', function(data) {
+      this.setState({
+        messages: this.state.messages.concat(data)
+      })
+    }.bind(this))
+  },
+
+  componentWillUnmount() {
+    pusher.unsubscribe(`convo_${conversation.id}`)
   },
 
   render: function() {
