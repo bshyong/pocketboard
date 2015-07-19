@@ -40,9 +40,7 @@ gem 'basscss-rails'
 gem 'workflow'
 gem 'pusher'
 
-group :development, :test do
-  gem 'faker'
-end
+gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
