@@ -15,6 +15,8 @@ TwilioRails4::Application.routes.draw do
 
   post 'notifications/notify' => 'notifications#notify'
 
+  resources :conversations, only: [:show]
+
   root 'page#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
